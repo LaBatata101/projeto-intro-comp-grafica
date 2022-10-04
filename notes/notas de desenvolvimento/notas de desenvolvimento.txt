@@ -1,0 +1,13 @@
+03102022.1 - NOTA 1 - Código feito nas férias totalmente recuperado e aprimorado, porém necessário mais
+polimento
+
+
+
+OBJETIVOS:
+[] Sistemas de movimentação
+	[X] Mover uma peça
+	[] Mover varias peças
+	[] Peças inimigas
+	[] Mecanicas de terreno
+
+[...]
