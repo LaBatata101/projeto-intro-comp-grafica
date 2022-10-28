@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "Menu",
+  "name": "StartMenu",
   "spriteId": null,
   "solid": false,
   "visible": true,

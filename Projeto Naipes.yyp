@@ -7,7 +7,7 @@
     {"id":{"name":"scr_geral","path":"scripts/scr_geral/scr_geral.yy",},"order":0,},
     {"id":{"name":"rm_menu_inicial","path":"rooms/rm_menu_inicial/rm_menu_inicial.yy",},"order":0,},
     {"id":{"name":"spr_UnidadeBase","path":"sprites/spr_UnidadeBase/spr_UnidadeBase.yy",},"order":0,},
-    {"id":{"name":"Menu","path":"objects/Menu/Menu.yy",},"order":0,},
+    {"id":{"name":"StartMenu","path":"objects/StartMenu/StartMenu.yy",},"order":0,},
     {"id":{"name":"spr_pecas_extra","path":"sprites/spr_pecas_extra/spr_pecas_extra.yy",},"order":1,},
     {"id":{"name":"spr_trilha","path":"sprites/spr_trilha/spr_trilha.yy",},"order":6,},
     {"id":{"name":"obj_EntidadePai","path":"objects/obj_EntidadePai/obj_EntidadePai.yy",},"order":2,},
