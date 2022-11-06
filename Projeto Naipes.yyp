@@ -53,6 +53,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Scripts","folderPath":"folders/Scripts.yy","order":5,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprites","folderPath":"folders/Sprites.yy","order":0,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"gp_principal","folderPath":"folders/Sprites/gp_principal.yy","order":0,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Trilhas","folderPath":"folders/Sprites/gp_principal/Trilhas.yy","order":7,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Peças antigas","folderPath":"folders/Sprites/Peças antigas.yy","order":4,},
   ],
   "AudioGroups": [
