@@ -101,7 +101,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "gp_principal",
-    "path": "folders/Sprites/gp_principal.yy",
+    "name": "Movimento",
+    "path": "folders/Sprites/gp_principal/Movimento.yy",
   },
 }
