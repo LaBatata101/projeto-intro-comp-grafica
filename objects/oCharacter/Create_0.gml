@@ -1,14 +1,14 @@
 #region Constructor
 
 	// Atributos/variaveis aparentemente precisam ser iniciadas
-	myName = "";
+	myName = choose("Yuri","Guilherme","Lincoln","Renan","Vitor","Czanildo");
 	myClass = "";	// Deve receber a classe do personagem
 	
 	// Acho que fora o nome, o resto das variaveis podem ser fixas
 	// Atributos abaixo baseeados no Fire Emblem de GBA
 	level = 1;			// level do personagem
 	xp = 0;				// Valor de experiencia atual do personagem
-	myHealth = 0;		
+	maxHealth = 0;		
 	strOrMag = 0;			
 	skill = 0;			
 	spd = 0;
@@ -19,16 +19,18 @@
 	con = 0;
 	aid = 0;
 	
+	// Variavel booleana para ajudar IA inimiga a saber quais são as unidades do player
+	isPlayerUnit = false;
+	
 	// Atributos de equipamento
 	weapon = [];
 	armor = [];
 	acessorie = []; 
 	
 	// O que seria um construtor em outras linguagens
-	initialize = function(_name, _class, _health, _strOrMag, _skill, _spd, _luck, _def, _res, _move, _con, _aid) {
-		self.myName = _name;
+	initialize = function(_class, _health, _strOrMag, _skill, _spd, _luck, _def, _res, _move, _con, _aid) {
 		self.myClass = _class;
-		self.myHealth = _health;
+		self.maxHealth = _health;
 		self.strOrMag = _strOrMag;
 		self.skill = _skill;
 		self.spd = _spd;
@@ -58,6 +60,11 @@
 	setAcessorie = function(_newAcessorie) {
 		self.acessorie = _newAcessorie;
 	}
+	
+	// Função para mudar valor de booleana isPlayerUnit
+	setIsPlayerUnit = function(_newBooleanValue) {
+		self.isPlayerUnit = _newBooleanValue;
+	}
 
 	// Função para quando beber potions ou for curado
 	addHealth = function(_healthValue) {
@@ -71,5 +78,5 @@
 	
 #endregion
 
-//stats = new character();
+// stats = new character();
 // stats.initialize("Yuri", "Cavaleiro", 10,2,2,2,2,2,2,2,2,2);	

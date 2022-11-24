@@ -5,8 +5,8 @@
 	// Colocar valores genericos de atributos para a classe na função initialize abaixo
 	// Inicialização generica
 	//	_name; _class; _health; _strOrMag; _skill; _spd; _luck; _def; _res; _move; _con; _aid;
-	self.initialize("Nome", "Cavaleiro", 
-	8, // Não sei qual o calculo de HP
+	self.initialize("Cavaleiro", 
+	irandom_range(4,5), // HP
 	irandom_range(4,6),
 	irandom_range(3,5),
 	irandom_range(4,5),
@@ -26,6 +26,10 @@
 	limitRes = irandom_range(12,14);
 	limitCon = irandom_range(12,14);
 	limitAid = irandom_range(10,12);
+	
+	// Atributos de equipamento
+	// array de weapon possui nome da arma, tipo, alcance e dano bonus
+	self.setWeapon(["Espada de cobre", "Espada", 1, 0]);
 	
 	// Função para customizar tudo depois de o personagem com esta classe ser criado, assim podendo criar classes unicas
 	initializeCustom = function(_level, _name, _class, _health, _strOrMag, _skill, _spd, _luck, _def, _res, _move, _con, _aid) {
@@ -49,6 +53,7 @@
 		while (self.xp > self.level * 40) {	// Expresão que verifica se o personagem ja tem xp para aumentar o level
 			self.xp = self.xp - self.level * 40;	// Reduz a xp pelo tanto que o usuario precisa para upar, e mantem o valor restante
 			self.level = self.level + 1;
+			maxHealth = maxHealth + ceil(self.con/5);
 			temp = irandom_range(1, 100);	// Variavel que devolve um valor aleatorio entre 1 e 100
 			temp2 = irandom_range(1, 100);
 			if (level mod 20 == 0) {
