@@ -1,6 +1,7 @@
 #region VARIÁVEIS
 isSelec = false;
 tipo = "Tile";
+isSolido = false;
 estado = "nenhum";
 isSolido = false;
 

@@ -6,14 +6,15 @@ if(acendendo)
 	with(global.id_Controle_Mapa)
 	{
 		show_MoveArea(other.cord_x, other.cord_y, other.movimento, other.alcance[0], other.alcance[1]);
-	}	
+	}
+	//*
 	if(isAliado)
 	{
 		var Cursor = instance_find(obj_Cursor, 0);
 		Cursor.id_Aliado = id;
 		Cursor.isAliado_Movendo = true;
 	}
-	
+	//*/
 	switch1 = false;
 }
 else if(apagando)
@@ -23,9 +24,11 @@ else if(apagando)
 }
 #endregion
 
-#region MOVIMENTO
+#region MOVIMENTO/*
 if(isMovendo)
 {
+	//show_message("AQUI Ó")
+	//*
 	{	//INICIALIZAÇÃO	}
 		if(isSelec) isSelec = false;
 		var i = contador1;
@@ -77,6 +80,6 @@ if(isMovendo)
 		contador1 = 1;
 		isMovendo = false;
 		ds_list_destroy(move_list);
-	}
+	}//*/
 }
 #endregion

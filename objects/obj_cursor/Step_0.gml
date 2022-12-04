@@ -135,6 +135,8 @@ if(keyboard_check_pressed(vk_enter)) and (!switch1)
 		var Objeto = instance_position(x,y, obj_EntidadePai);
 		if(Objeto != noone)	//Se existir uma Unidade
 		{
+			if(!Objeto.isSelec) global.id_Controle_Mapa.Selecionado_buffer = Objeto;
+			Objeto.isSelec = !Objeto.isSelec;
 			//show_debug_message("Unidade: (" + string(Objeto.cord_x) + "," + string(Objeto.cord_y) + ")");
 		}
 		else				//Se não tiver, pega o Tile
@@ -143,9 +145,9 @@ if(keyboard_check_pressed(vk_enter)) and (!switch1)
 			//show_debug_message("Tile: (" + string(Objeto.cord_x) + "," + string(Objeto.cord_y) + ")");
 		}
 	
-		if(!Objeto.isSelec) global.id_Controle_Mapa.Selecionado_buffer = Objeto;
+		//if(!Objeto.isSelec) global.id_Controle_Mapa.Selecionado_buffer = Objeto;
 		//else global.id_Controle_Mapa.Selecionado = noone;
-		Objeto.isSelec = !Objeto.isSelec;
+		//Objeto.isSelec = !Objeto.isSelec;
 	}
 	#endregion
 	
@@ -153,11 +155,13 @@ if(keyboard_check_pressed(vk_enter)) and (!switch1)
 	#region MOVENDO ALIADO
 	if(isAliado_Movendo) //and (!isAliado_Atacando)
 	{
+		//show_message("INICIANDO: MOVENDO ALIADO")
 		var _Tile = instance_place(x,y, obj_Tile);
 		if(id_Aliado.cord_x != cord_x || id_Aliado.cord_y != cord_y) and (_Tile.estado == "movimento")
 		{
 			with(id_Aliado)
 			{
+				//show_message("Passando as coisas pra entidade")
 				move_list = other.move_list;
 				//move_list = scr_create_moveList(cord_x, cord_y, other.cord_x, other.cord_y);
 				isMovendo = true;
@@ -165,12 +169,14 @@ if(keyboard_check_pressed(vk_enter)) and (!switch1)
 		}
 		else
 		{
+			//show_message("Destino não é válido")
 			id_Aliado.isSelec = false;
 			id_Aliado.isMovendo = false;
 			id_Aliado = noone;
 			if(ds_exists(move_list, ds_type_list)) ds_list_destroy(move_list);
 		}
 		isAliado_Movendo = false;
+		//show_message("Acabou!")
 	}
 	#endregion
 	

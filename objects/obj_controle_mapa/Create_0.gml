@@ -13,9 +13,7 @@ global.larg_tela = round(room_width) div TAM_TILE;
 global.id_Controle_Mapa = id;
 #endregion
 
-
 //CONSTRUINDO FASE
-
 #region GERAR GRID
 for(var i = 0; i < global.larg_tela; i++)
 {
@@ -52,58 +50,53 @@ instance_create_layer(0,0, "Cursor", obj_Cursor,
 #endregion
 
 
-// MÉTODOS
 
-#region MOTSRA AREA MOVIMENTO
+//	MÉTODOS
+#region MOTSRA AREA DE MOVIMENTO
 show_MoveArea = function(cord_x, cord_y, movimento, alcance_min, alcance_max)
 {
-	{	//VARIÁVEIS
+	set_MoveArea(cord_x, cord_y, movimento);
+	
+	{	//VARIÁVEIS	}
 		var _x1 = cord_x - movimento;
 		var _x2 = cord_x + movimento;
 		var _y1 = cord_y - movimento;
 		var _y2 = cord_y + movimento;
 	}
-	
-	algoritmo_MC(cord_x, cord_y, movimento);
-	
-	for(var i = _x1; i <= _x2; i++)			// caminha pelas linhas
+	for(var i = clamp(_x1, 0, global.larg_tela-1); i <= clamp(_x2, 0, global.larg_tela-1); i++)		// Percorre as linhas
 	{
-		for(var j = _y1; j <= _y2; j++)		// caminha pelas colunas
-		{
-			{	//VARIÁVEIS
-				var inTelaX	= (0 <= i && i < global.larg_tela);
-				var inTelaY	= (0 <= j && j < global.alt_tela);
-				var distancia = abs(cord_x - i) + abs(cord_y - j);
-			}
-			
-			if(inTelaX && inTelaY) and (distancia <= movimento)
+		for(var j = clamp(_y1, 0, global.alt_tela-1); j <= clamp(_y2, 0, global.alt_tela-1); j++)	// Percorre as colunas
+		{			
+			if(Casa[i][j].distancia != -1)
 			{
-				if (Casa[i][j].estado != "movimento") Casa[i][j].estado = "movimento";
-				
-				if (alcance_max > 0) show_AtqArea(i, j, alcance_min, alcance_max);
+				/*if(Casa[i][j].estado != "movimento")*/Casa[i][j].estado = "movimento";
+				if(alcance_max > 0) show_AttackRange(i, j, alcance_min, alcance_max);
 			}
 		}
 	}
 }
 #endregion
 
-#region Algoritmo de melhor caminho
-algoritmo_MC = function(cord_x, cord_y, movimento)
+#region DEFINI AREA DE MOVIMENTO
+set_MoveArea = function(cord_x, cord_y, movimento)
 {
 	Casa[cord_x][cord_y].distancia = 0;
-	for(var p = 1; p <= movimento; p++) //CONTADOR DE PASSOS
+	for(var p = 1; p <= movimento; p++) // Contador de passos
 	{
-		for(var i = cord_x - p; i <= cord_x + p; i++) //PERCORRE X
+		for(var i = clamp(cord_x - p, 0, global.larg_tela-1); i <= clamp(cord_x + p, 0, global.larg_tela-1); i++) // Percorre X
 		{
-			for(var j = cord_y - p; j <= cord_y + p; j++) //PERCORRE Y
+			for(var j = clamp(cord_y - p, 0, global.alt_tela-1); j <= clamp(cord_y + p, 0, global.alt_tela-1); j++) // Percorre Y
 			{
-				if(!Casa[i][j].isSolido)
+				if(!Casa[i][j].isSolido) and (Casa[i][j].distancia == -1)
 				{
-					if(0 <= i) var _cima = Casa[i-1][j].distancia != -1;
-					if(i < global.larg_tela) var _baixo = Casa[i+1][j].distancia != -1;
-					if(0 <= j) var _esquerda = Casa[i][j-1].distancia != -1;
-					if(j < global.alt_tela) var _direita = Casa[i][j+1].distancia != -1;
-					if(_cima || _baixo || _esquerda || _direita) Casa[i][j].distancia = p;
+					{	//VARIÁVEIS	}
+						var _esquerda = false, _direita = false, _cima = false, _baixo = false;
+						if(0 < i) _esquerda = Casa[i-1][j].distancia == p-1;
+						if(i-1 < global.larg_tela) _direita = Casa[i+1][j].distancia == p-1;
+						if(0 < j) _cima = Casa[i][j-1].distancia == p-1;
+						if(j-1 < global.alt_tela) _baixo = Casa[i][j+1].distancia == p-1;
+					}
+					if(_esquerda || _direita || _cima || _baixo) Casa[i][j].distancia = p;
 				}
 			}
 		}
@@ -111,27 +104,25 @@ algoritmo_MC = function(cord_x, cord_y, movimento)
 }
 #endregion
 
-#region MOSTRA AREA ATAQUE
-show_AtqArea = function(cord_x, cord_y, alcance_min, alcance_max)
+#region MOSTRA AREA DE ATAQUE
+show_AttackRange = function(cord_x, cord_y, alcance_min, alcance_max)
 {
-	{	//VARIÁVEIS
+	{	//VARIÁVEIS	}
 		var _x1 = cord_x - alcance_max;
 		var _x2 = cord_x + alcance_max;
 		var _y1 = cord_y - alcance_max;
 		var _y2 = cord_y + alcance_max;
 	}
 	
-	for(var i = _x1; i <= _x2; i++)			// caminha pelas linhas
+	for(var i = clamp(_x1, 0, global.larg_tela-1); i <= clamp(_x2, 0, global.larg_tela-1); i++)		// Percorre as linhas
 	{
-		for(var j = _y1; j <= _y2; j++)		// caminha pelas colunas
+		for(var j = clamp(_y1, 0, global.alt_tela-1); j <= clamp(_y2, 0, global.alt_tela-1); j++)	// Percorre as colunas
 		{
-			{//VARIÁVEIS
-				var inTelaXX = (i >= 0 && i < global.larg_tela);
-				var inTelaYY = (j >= 0 && j < global.alt_tela);
+			{	//VARIÁVEIS	}
 				var alcance = abs(cord_x - i) + abs(cord_y - j);
+				var inAlcance = alcance_min <= alcance && alcance <= alcance_max
 			}
-					
-			if(inTelaXX && inTelaYY) and (alcance_max >= alcance && alcance >= alcance_min) and (Casa[i][j].estado == "nenhum") Casa[i][j].estado = "ataque";
+			if(inAlcance) and (Casa[i][j].estado == "nenhum") Casa[i][j].estado = "ataque";
 		}
 	}
 }

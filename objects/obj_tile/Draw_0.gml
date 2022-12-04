@@ -1,4 +1,4 @@
-draw_self(); //serve para desenhar a si mesmo
+draw_self();
 
 #region ALCANCE E APARENCIA
 if(estado != "nenhum") switch(estado)
@@ -41,7 +41,8 @@ if(estado != "nenhum") switch(estado)
 	}
 	#endregion
 	
-	#region SUPORTE
+	#region SUPORTE (*)
+	/*
 	case "suporte":
 	{
 		//olha os Tiles ao redor e escolhe o sprite || AUTOTILE
@@ -58,6 +59,7 @@ if(estado != "nenhum") switch(estado)
 		draw_sprite(spr_selecao_suporte, i, x,y);
 		break;
 	}
+	//*/
 	#endregion
 	default:
 	{
@@ -67,5 +69,4 @@ if(estado != "nenhum") switch(estado)
 }
 #endregion
 
-draw_text(x,y, string(distancia))
-//draw_text(x,y, string(cord_x)+","+string(cord_y))
+draw_text(x+10,y+10, string(distancia))

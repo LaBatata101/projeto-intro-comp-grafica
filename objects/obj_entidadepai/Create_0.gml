@@ -22,5 +22,5 @@ veloc = 3;		//rapido 5 | normal 3 | lento 1
 #region VARIÁVEIS SECUNDÁRIAS
 ///STATUS BASE
 movimento = 3;
-alcance = [1, 1];
+alcance = [1, 2]; //[Alcance Min, Alcance Max]
 #endregion
