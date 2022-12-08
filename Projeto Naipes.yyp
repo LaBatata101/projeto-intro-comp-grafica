@@ -42,9 +42,9 @@
     {"id":{"name":"rm_batalha_teste","path":"rooms/rm_batalha_teste/rm_batalha_teste.yy",},"order":1,},
   ],
   "Options": [
+    {"name":"operagx","path":"options/operagx/options_operagx.yy",},
     {"name":"Main","path":"options/main/options_main.yy",},
     {"name":"Windows","path":"options/windows/options_windows.yy",},
-    {"name":"operagx","path":"options/operagx/options_operagx.yy",},
   ],
   "defaultScriptType": 1,
   "isEcma": false,
@@ -53,8 +53,8 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"rm_batalha_teste","path":"rooms/rm_batalha_teste/rm_batalha_teste.yy",},},
     {"roomId":{"name":"rm_menu_inicial","path":"rooms/rm_menu_inicial/rm_menu_inicial.yy",},},
+    {"roomId":{"name":"rm_batalha_teste","path":"rooms/rm_batalha_teste/rm_batalha_teste.yy",},},
     {"roomId":{"name":"rm_menu_settings","path":"rooms/rm_menu_settings/rm_menu_settings.yy",},},
   ],
   "Folders": [

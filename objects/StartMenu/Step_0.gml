@@ -1,9 +1,6 @@
-up_key = keyboard_check_pressed(vk_up);
-down_key = keyboard_check_pressed(vk_down);
+up_key = keyboard_check_pressed(ord("W"));
+down_key = keyboard_check_pressed(ord("S"));
 accept_key = keyboard_check_pressed(vk_enter);
-
-is_keyboard_used = up_key || down_key || accept_key;
-//is_mouse_used = is_mouse_moving();
 
 selected_menu_item_index += down_key - up_key;
 
@@ -12,9 +9,9 @@ if selected_menu_item_index >= menu_length {
 	selected_menu_item_index = 0;
 }
 
-//if selected_menu_item_index < 0 {
-//	selected_menu_item_index = menu_length - 1;
-//}
+if selected_menu_item_index < 0 {
+	selected_menu_item_index = menu_length - 1;
+}
 
 if accept_key {
 	switch (selected_menu_item_index) {

@@ -69,4 +69,4 @@ if(estado != "nenhum") switch(estado)
 }
 #endregion
 
-draw_text(x+10,y+10, string(distancia))
+//draw_text(x+10,y+10, string(distancia))

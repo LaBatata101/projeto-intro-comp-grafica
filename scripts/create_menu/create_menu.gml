@@ -20,17 +20,10 @@ function draw_menu(menu_options, x_pos, y_pos, menu_items_gap,
 		}
 		
 		var str_width = string_width(menu_options[i]);
-		var str_height = string_height(menu_options[i]);
 		
 		var x1 =  x_pos - str_width / 2; // left side of the string
 		var y1 = y_pos + menu_items_gap * i; // top side of the string
-		
-		var is_mouse_hovering = point_in_rectangle(mouse_x, mouse_y, x1, y1, x1 + str_width, y1 + str_height);
 
-		if (is_mouse_hovering) {
-			color = selected_color;
-		}
-		
 		// draw string centered
 		draw_text_color(x1, y1, menu_options[i], color, color, color, color, 1);	
 	}
